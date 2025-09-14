@@ -16,6 +16,7 @@ class HomeView extends StatelessWidget {
         backgroundColor: AppColors.lightBlue,
         centerTitle: true,
         elevation: 0,
+        scrolledUnderElevation: 0,
         title: Text('New Trends', style: AppStyles.appBarText),
         leading: SizedBox(),
         actions: [
