@@ -28,11 +28,13 @@ environment:
 # the latest version available on pub.dev. To see which dependencies have newer
 # versions available, run `flutter pub outdated`.
 dependencies:
+  cached_network_image: ^3.4.1
   cupertino_icons: ^1.0.8
   flutter:
     sdk: flutter
   flutter_bloc: ^9.1.1
   flutter_screenutil: ^5.9.3
+  font_awesome_flutter: ^10.9.1
   http: ^1.5.0
   top_snackbar_flutter: ^3.3.0
 

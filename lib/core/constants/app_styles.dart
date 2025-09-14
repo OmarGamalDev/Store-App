@@ -8,9 +8,14 @@ class AppStyles {
     fontSize: 28.sp,
     fontWeight: FontWeight.bold,
   );
+  static final TextStyle appBarText = TextStyle(
+    color: AppColors.blackColor,
+    fontSize: 22.sp,
+    fontWeight: FontWeight.bold,
+  );
   static final TextStyle headline1 = TextStyle(
-    color: AppColors.whiteColor,
-    fontSize: 24.sp,
+    color: AppColors.greyColor,
+    fontSize: 18.sp,
     fontWeight: FontWeight.w700,
   );
   static final TextStyle bodytext = TextStyle(
