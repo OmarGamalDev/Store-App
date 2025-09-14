@@ -20,7 +20,7 @@ factory ProductModel.fromJson(jsonData){
   return ProductModel(
     id: jsonData['id'],
     title: jsonData['title'],
-    price: jsonData['price'],
+    price: (jsonData['price']as num).toDouble(),
     description: jsonData['description'],
     category: jsonData['category'],
     image: jsonData['image'],
@@ -38,7 +38,7 @@ class RattingModel{
   });
   factory RattingModel.fromJson(jsonData){
     return RattingModel(
-      rate: jsonData['rate'],
+      rate: (jsonData['rate']as num).toDouble(),
       count: jsonData['count'],
     );
   }

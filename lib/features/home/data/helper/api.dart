@@ -1,18 +1,13 @@
 import 'dart:convert';
-import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
 class Api {
-  static const String baseUrl = 'https://fakestoreapi.com/';
+  static const String baseUrl = 'https://fakestoreapi.com';
 
   Future<dynamic> get({
     required String endPoint,
-    @required String? token,
   }) async {
     Map<String, String> headers = {};
-    if (token != null) {
-      headers.addAll({'Authorization': 'Bearer $token'});
-    }
     http.Response response = await http.get(
       Uri.parse(baseUrl + endPoint),
       headers: headers,
