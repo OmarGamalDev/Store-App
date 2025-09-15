@@ -12,9 +12,9 @@ class HomeViewBody extends StatelessWidget {
       padding: EdgeInsets.only(left: 16.w, right: 16.w),
       child: Column(
         children: [
-          SizedBox(height: 100.h, child: futureBuilderOfGetAllCategories()),
+          SizedBox(height: 100.h, child: FuturebuilderOfGetAllCategories()),
           SizedBox(height: 55.h),
-          Expanded(child: futureBuilderOfGetAllProducts()),
+          Expanded(child: FutureBuilderOfGetAllProducts()),
         ],
       ),
     );

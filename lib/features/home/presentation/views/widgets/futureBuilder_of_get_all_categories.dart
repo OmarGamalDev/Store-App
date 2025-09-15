@@ -1,9 +1,13 @@
-  import 'package:flutter/material.dart';
+import 'package:flutter/material.dart';
 import 'package:store_app/features/home/data/services/all_categories_services.dart';
 import 'package:store_app/features/home/presentation/views/widgets/display_categories.dart';
 
-FutureBuilder<List<dynamic>> futureBuilderOfGetAllCategories() {
-    return FutureBuilder(
+class FuturebuilderOfGetAllCategories extends StatelessWidget {
+  const FuturebuilderOfGetAllCategories({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return FutureBuilder<List<dynamic>>  (
       future: AllCategoriesServices().getAllCategories(),
       builder: (context, asyncSnapshot) {
         if (asyncSnapshot.connectionState == ConnectionState.waiting) {
@@ -19,3 +23,4 @@ FutureBuilder<List<dynamic>> futureBuilderOfGetAllCategories() {
       },
     );
   }
+}
