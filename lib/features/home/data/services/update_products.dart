@@ -14,7 +14,7 @@ class UpdateProducts {
       "id: $id, title: $title, price: $price, description: $description, image: $image, category: $category",
     );
     var data = await Api().put(
-      endPoint: "/products/$id",
+      endPoint: "products/$id",
       data: {
         "id": id,
         "title": title,

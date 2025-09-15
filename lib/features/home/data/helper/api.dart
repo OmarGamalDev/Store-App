@@ -3,7 +3,7 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 
 class Api {
-  static const String baseUrl = 'https://fakestoreapi.com';
+  static const String baseUrl = 'https://fakestoreapi.com/';
 
   Future<dynamic> get({required String endPoint}) async {
     Map<String, String> headers = {};
