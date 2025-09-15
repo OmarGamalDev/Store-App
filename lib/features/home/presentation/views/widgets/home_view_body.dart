@@ -36,8 +36,8 @@ class _HomeViewBodyState extends State<HomeViewBody> {
           ),
           SizedBox(height: 55.h),
           Expanded(
-            child: FutureBuilderOfGetAllProducts(
-              category: selectedCategory,
+            child: FutureBuilderOfGetAllProducts( 
+              selectedCategory: selectedCategory,         
             ),
           ),
         ],

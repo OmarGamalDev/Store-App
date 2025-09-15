@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:store_app/core/constants/routes.dart';
-import 'package:store_app/features/home/presentation/views/home_view.dart';
+import 'package:store_app/features/splash/presentation/views/splash_view.dart';
 
 void main() {
   runApp(const StoreApp());
@@ -23,7 +23,7 @@ class StoreApp extends StatelessWidget {
       builder: (context, child) => MaterialApp(
         debugShowCheckedModeBanner: false,
         onGenerateRoute: onGenerateRoute,
-        initialRoute: HomeView.routeName,
+        initialRoute: SplashView.routeName,
       ),
     );
   }

@@ -5,20 +5,21 @@ import 'package:store_app/features/home/data/services/category_service.dart';
 import 'package:store_app/features/home/presentation/views/widgets/display_products_in_grid_view_builder.dart';
 
 class FutureBuilderOfGetAllProducts extends StatelessWidget {
-  final String? category;
-  const FutureBuilderOfGetAllProducts({super.key, this.category});
+  final String? selectedCategory;
+  const FutureBuilderOfGetAllProducts({super.key, this.selectedCategory});
 
   @override
   Widget build(BuildContext context) {
     return FutureBuilder<List<ProductModel>>(
-      future: category == null
+      future: selectedCategory == null
           ? AllProductsService().getAllProducts()
-          : CategoryService().getCategorysProducts(category: category!),
+          : CategoryService().getCategorysProducts(category: selectedCategory!),
       builder: (context, snapshot) {
         if (snapshot.connectionState == ConnectionState.waiting) {
           return const Center(child: CircularProgressIndicator());
         } else if (snapshot.hasData) {
-          return gridViewBuilder(snapshot.data!);
+          List<ProductModel> products = snapshot.data!;
+          return gridViewBuilder(products);
         } else if (snapshot.hasError) {
           return Center(child: Text('Error: ${snapshot.error}'));
         } else {
