@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:store_app/features/home/data/models/product_model.dart';
 import 'package:store_app/features/home/presentation/views/home_view.dart';
 import 'package:store_app/features/home/presentation/views/update_product_view.dart';
 
@@ -7,7 +8,8 @@ Route<dynamic> onGenerateRoute(RouteSettings settings) {
     case HomeView.routeName:
       return MaterialPageRoute(builder: (_) => const HomeView());
     case UpdateProductView.routeName:
-      return MaterialPageRoute(builder: (_) => const UpdateProductView());
+      final product = settings.arguments as ProductModel;
+      return MaterialPageRoute(builder: (_) => UpdateProductView(product: product));
     default:
       return MaterialPageRoute(
         builder: (_) => const Scaffold(),

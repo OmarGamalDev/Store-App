@@ -4,6 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:store_app/core/constants/app_colors.dart';
 import 'package:store_app/core/constants/app_styles.dart';
 import 'package:store_app/features/home/data/models/product_model.dart';
+import 'package:store_app/features/home/presentation/views/update_product_view.dart';
 
 class ProductCard extends StatelessWidget {
   const ProductCard({super.key, required this.product});
@@ -20,7 +21,7 @@ class ProductCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        Navigator.pushNamed(context, '/updateProduct');
+        Navigator.pushNamed(context, UpdateProductView.routeName,arguments: product);
       },
       child: Stack(
         clipBehavior: Clip.none,

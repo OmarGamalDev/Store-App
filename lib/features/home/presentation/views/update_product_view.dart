@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:store_app/core/constants/app_colors.dart';
 import 'package:store_app/core/constants/app_styles.dart';
+import 'package:store_app/features/home/data/models/product_model.dart';
 import 'package:store_app/features/home/presentation/views/widgets/update_product_view_body.dart';
 
 class UpdateProductView extends StatelessWidget {
-  const UpdateProductView({super.key});
+  const UpdateProductView({super.key, required this.product});
   static const String routeName = '/updateProduct';
+  final ProductModel product;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -27,7 +29,7 @@ class UpdateProductView extends StatelessWidget {
           ),
         ),
       ),
-      body: UpdateProductViewBody(),
+      body: UpdateProductViewBody(product: product),
     );
   }
 }
