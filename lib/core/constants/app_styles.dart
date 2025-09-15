@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+
 import 'app_colors.dart';
 
 class AppStyles {
@@ -25,8 +26,8 @@ class AppStyles {
   );
 
   static final TextStyle buttonText = TextStyle(
-    color: AppColors.primaryColor,
-    fontSize: 20.sp,
-    fontWeight: FontWeight.w600,
+    color: AppColors.whiteColor,
+    fontSize: 17.sp,
+    fontWeight: FontWeight.w400,
   );
 }
