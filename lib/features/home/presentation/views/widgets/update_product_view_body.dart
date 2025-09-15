@@ -1,11 +1,11 @@
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
 import 'package:store_app/core/constants/app_styles.dart';
 import 'package:store_app/core/shared_widgets/custom_button.dart';
 import 'package:store_app/core/shared_widgets/custom_text_form_field.dart';
+import 'package:store_app/core/shared_widgets/show_error_message.dart';
+import 'package:store_app/core/shared_widgets/show_success_message.dart';
 import 'package:store_app/features/home/data/models/product_model.dart';
 import 'package:store_app/features/home/data/services/update_products.dart';
 
@@ -59,15 +59,24 @@ class _UpdateProductViewBodyState extends State<UpdateProductViewBody> {
               ),
               SizedBox(height: 30.h),
               CustomButton(
-                onPressed: ()async {
+                onPressed: () async {
                   isLoading = true;
                   setState(() {});
                   try {
                     await updateProduct();
-                    log('Product Updated');
-                    Navigator.pop(context, true);
+                    if (context.mounted) {
+                      showsuccessmessage(
+                        context,
+                        message: 'Product updated successfully',
+                      );
+                    }
+                    if (context.mounted) {
+                      Navigator.pop(context, true);
+                    }
                   } catch (e) {
-                    log('Error updating product: $e');
+                    if (context.mounted) {
+                      showerrormessage(context, message: e.toString());
+                    }
                   }
                   isLoading = false;
                   setState(() {});
@@ -85,13 +94,17 @@ class _UpdateProductViewBodyState extends State<UpdateProductViewBody> {
     );
   }
 
- Future <void> updateProduct() async {
+  Future<void> updateProduct() async {
     await UpdateProducts().updateProductService(
       id: widget.product.id,
-      title: productName==null? widget.product.title:productName!,
-      price: price == null ? widget.product.price : double.tryParse(price!) ?? widget.product.price,
-      description: description == null ? widget.product.description:description!,
-      image: image == null ? widget.product.image:image!,
+      title: productName == null ? widget.product.title : productName!,
+      price: price == null
+          ? widget.product.price
+          : double.tryParse(price!) ?? widget.product.price,
+      description: description == null
+          ? widget.product.description
+          : description!,
+      image: image == null ? widget.product.image : image!,
       category: widget.product.category,
     );
   }
