@@ -6,9 +6,15 @@ import 'package:store_app/core/constants/app_styles.dart';
 import 'package:store_app/features/home/data/models/product_model.dart';
 import 'package:store_app/features/home/presentation/views/update_product_view.dart';
 
-class ProductCard extends StatelessWidget {
+class ProductCard extends StatefulWidget {
   const ProductCard({super.key, required this.product});
   final ProductModel product;
+
+  @override
+  State<ProductCard> createState() => _ProductCardState();
+}
+
+class _ProductCardState extends State<ProductCard> {
   String formatPrice(double price) {
     if (price % 1 == 0) {
       return price.toInt().toString();
@@ -17,11 +23,16 @@ class ProductCard extends StatelessWidget {
     }
   }
 
+  bool isFavorite = false;
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        Navigator.pushNamed(context, UpdateProductView.routeName,arguments: product);
+        Navigator.pushNamed(
+          context,
+          UpdateProductView.routeName,
+          arguments: widget.product,
+        );
       },
       child: Stack(
         clipBehavior: Clip.none,
@@ -48,9 +59,9 @@ class ProductCard extends StatelessWidget {
                   children: [
                     SizedBox(height: 40.h),
                     Text(
-                      product.title.length > 10
-                          ? "${product.title.substring(0, 10)}..."
-                          : product.title,
+                      widget.product.title.length > 10
+                          ? "${widget.product.title.substring(0, 10)}..."
+                          : widget.product.title,
                       style: AppStyles.headline1,
                     ),
                     SizedBox(height: 3.h),
@@ -58,7 +69,7 @@ class ProductCard extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Text(
-                          "\$${formatPrice(product.price)}",
+                          "\$${formatPrice(widget.product.price)}",
                           overflow: TextOverflow.ellipsis,
                           style: AppStyles.headline1.copyWith(
                             color: Colors.black,
@@ -67,8 +78,15 @@ class ProductCard extends StatelessWidget {
                         IconButton(
                           padding: EdgeInsets.only(left: 20.w),
                           constraints: const BoxConstraints(),
-                          onPressed: () {},
-                          icon: Icon(Icons.favorite, color: Colors.red),
+                          onPressed: () {
+                            setState(() {
+                              isFavorite = !isFavorite;
+                            });
+                          },
+                          icon: Icon(
+                            Icons.favorite,
+                            color: isFavorite ? Colors.red : Colors.grey,
+                          ),
                         ),
                       ],
                     ),
@@ -85,7 +103,7 @@ class ProductCard extends StatelessWidget {
               height: 100.h,
               width: 100.w,
               fit: BoxFit.contain,
-              imageUrl: product.image,
+              imageUrl: widget.product.image,
               placeholder: (context, url) =>
                   Center(child: CircularProgressIndicator()),
               errorWidget: (context, url, error) => Icon(Icons.error),

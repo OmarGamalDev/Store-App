@@ -1,10 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:store_app/core/constants/routes.dart';
 import 'package:store_app/features/home/presentation/views/home_view.dart';
 
 void main() {
   runApp(const StoreApp());
+  SystemChrome.setPreferredOrientations([
+    DeviceOrientation.portraitUp,
+    DeviceOrientation.portraitDown,
+  ]);
 }
 
 class StoreApp extends StatelessWidget {
